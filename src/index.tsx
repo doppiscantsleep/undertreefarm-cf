@@ -66,8 +66,8 @@ app.get("*", async (c) => {
               position: relative;
             }
             img {
-              width: 150px; /* Adjust size of the favicon */
-              margin-top: 20px; /* Add spacing at the top */
+              width: 250px; /* Adjust size of the favicon */
+              margin-top: 150px; /* Add spacing at the top */
             }
             .bee {
               position: fixed;
