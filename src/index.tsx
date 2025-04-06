@@ -1,19 +1,14 @@
 import 'dotenv/config';
 import { Hono } from 'hono';
 import { renderer } from './renderer';
-import { envReq } from '../functions/env';
+import { getWeatherKey } from '../functions/env';
 
 // const weatherapi = process.env.OPENWEATHER_KEY;
 
-const weatherapi = envReq
+
 
 
 // const weatherapi = context.env.OPENWEATHER_KEY;
-
-
-
-const theURL =
-  "http://api.openweathermap.org/data/2.5/weather?id=4996956&units=imperial&appid=" + weatherapi;
 
 interface WeatherData {
   weather: { description: string }[];
@@ -21,7 +16,10 @@ interface WeatherData {
   wind: { speed: number; deg: number };
 }
 
-const getStuff = async () => {
+const getStuff = async (context: any) => {
+  const weatherapi = await getWeatherKey(context);
+  const theURL = `http://api.openweathermap.org/data/2.5/weather?id=4996956&units=imperial&appid=${weatherapi}`;
+  
   const response = await fetch(theURL);
   const data: WeatherData = await response.json();
 
@@ -40,7 +38,7 @@ const app = new Hono();
 app.use(renderer);
 
 app.get("*", async (c) => {
-  const weatherData = await getStuff(); // Call getStuff here
+  const weatherData = await getStuff(c); // Call getStuff here
 
   // Determine the image to display based on the description
   const weatherImage =
