@@ -38,34 +38,11 @@ img {
     left: 0;
 }
 
-#arch {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    background-image: url('/images/arch.png');
-    background-size: 550px; /* Match logo width */
-    background-position: top center;
-    background-repeat: no-repeat;
-    z-index: 1;
-    opacity: 0.6;
-}
-
 .logo {
     position: relative;
     width: 250px;
     margin-top: 150px;
     z-index: 2;
-}
-
-#weather {
-    margin-top: -186px;
-    /* Add spacing below the favicon */
-    text-align: center;
-    /* Center-align the weather information */
-    font-size: 0.8rem;
-    /* Make the font smaller */
 }
 
 /* Add media queries for responsive sizing */
@@ -85,4 +62,28 @@ img {
     .logo {
         width: 150px;
     }
+}
+
+#arch {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-image: url('/images/arch.png');
+    background-size: 550px; /* Match logo width */
+    background-position: top center;
+    background-repeat: no-repeat;
+    z-index: 1;
+    opacity: 0.6;
+}
+
+
+#weather {
+    margin-top: -186px;
+    /* Add spacing below the favicon */
+    text-align: center;
+    /* Center-align the weather information */
+    font-size: 0.8rem;
+    /* Make the font smaller */
 }
