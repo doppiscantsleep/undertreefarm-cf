@@ -40,15 +40,23 @@ img {
 
 #arch {
     position: fixed;
-    width: 101%;
-    height: 64%;
+    width: 100%;
+    height: 100vh;
     top: 0;
     left: 0;
     background-image: url('/images/arch.png');
-    background-size: 90%;
-    background-position: center;
-    z-index: -1; /* Ensure the arch is behind other elements */
-    opacity: 0.6; /* Optional: make the arch slightly transparent */
+    background-size: 550px; /* Match logo width */
+    background-position: top center;
+    background-repeat: no-repeat;
+    z-index: 1;
+    opacity: 0.6;
+}
+
+.logo {
+    position: relative;
+    width: 250px;
+    margin-top: 150px;
+    z-index: 2;
 }
 
 #weather {
@@ -58,4 +66,23 @@ img {
     /* Center-align the weather information */
     font-size: 0.8rem;
     /* Make the font smaller */
+}
+
+/* Add media queries for responsive sizing */
+@media screen and (max-width: 768px) {
+    #arch {
+        background-size: 200px;
+    }
+    .logo {
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #arch {
+        background-size: 150px;
+    }
+    .logo {
+        width: 150px;
+    }
 }

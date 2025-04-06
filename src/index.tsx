@@ -3,7 +3,7 @@ import { Hono } from 'hono';
 import { renderer } from './renderer';
 import { getWeatherKey } from '../functions/env';
 
-
+// comment out for prod
 // const theURL = "http://api.openweathermap.org/data/2.5/weather?id=4996956&units=imperial&appid=" + process.env.OPENWEATHER_KEY;
 
 
@@ -15,6 +15,7 @@ interface WeatherData {
 
 const getStuff = async (context: any) => {
 
+  // comment out for local testing
   const weatherapi = await getWeatherKey(context);
   const theURL = `http://api.openweathermap.org/data/2.5/weather?id=4996956&units=imperial&appid=${weatherapi}`;
 
@@ -64,7 +65,7 @@ app.get("*", async (c) => {
         <body>
         <div id="arch">
         </div>
-          <img src="/images/favicon.png" alt="Undertree Farm logo">
+          <img src="/images/favicon.png" alt="Undertree Farm logo" class="logo">
           <div id="weather">
             <p>${weatherImage}</p>
             <p>Description: ${weatherData.desc}</p>
