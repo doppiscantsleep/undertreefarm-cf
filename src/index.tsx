@@ -38,9 +38,15 @@ app.get("*", async (c) => {
   const weatherData = await getStuff(c); // Call getStuff here
 
   // Determine the image to display based on the description
-  const weatherImage =
+  const weatherImage = 
     weatherData.desc === "clear sky"
       ? `<img src="/clear-sky.png" alt="Clear Sky" style="width: 50px; height: 50px; margin-left: 10px;">`
+      : weatherData.desc.includes("rain")
+      ? `<img src="/rain.png" alt="Rain" style="width: 50px; height: 50px; margin-left: 10px;">`
+      : weatherData.desc.includes("thunderstorm")
+      ? `<img src="/thunderstorm.png" alt="Thunderstorm" style="width: 50px; height: 50px; margin-left: 10px;">`
+      : weatherData.desc === "few clouds"
+      ? `<img src="/few-clouds.png" alt="Few Clouds" style="width: 50px; height: 50px; margin-left: 10px;">`
       : "";
 
 
