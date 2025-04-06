@@ -6,10 +6,6 @@ import { getWeatherKey } from '../functions/env';
 // const weatherapi = process.env.OPENWEATHER_KEY;
 
 
-
-
-// const weatherapi = context.env.OPENWEATHER_KEY;
-
 interface WeatherData {
   weather: { description: string }[];
   main: { temp: number; feels_like: number; humidity: number };
@@ -17,9 +13,10 @@ interface WeatherData {
 }
 
 const getStuff = async (context: any) => {
+
   const weatherapi = await getWeatherKey(context);
   const theURL = `http://api.openweathermap.org/data/2.5/weather?id=4996956&units=imperial&appid=${weatherapi}`;
-  
+
   const response = await fetch(theURL);
   const data: WeatherData = await response.json();
 
@@ -47,8 +44,8 @@ app.get("*", async (c) => {
       : "";
 
 
-      return c.html(
-        `<!DOCTYPE html>
+  return c.html(
+    `<!DOCTYPE html>
         <html lang="en">
         <head>
           <meta charset="UTF-8">
@@ -69,7 +66,7 @@ app.get("*", async (c) => {
               position: relative;
             }
             img {
-              width: 250px; /* Adjust size of the favicon */
+              width: 150px; /* Adjust size of the favicon */
               margin-top: 20px; /* Add spacing at the top */
             }
             .bee {
@@ -85,7 +82,7 @@ app.get("*", async (c) => {
               left: 0;
             }
       #weather {
-        margin-top: -60px; /* Add spacing below the favicon */
+        margin-top: -160px; /* Add spacing below the favicon */
         text-align: center; /* Center-align the weather information */
         font-size: 0.8rem; /* Make the font smaller */
       }
@@ -115,7 +112,7 @@ app.get("*", async (c) => {
           </script>
         </body>
         </html>`
-      );
+  );
 });
 
 export default app;
