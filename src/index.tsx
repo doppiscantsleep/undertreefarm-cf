@@ -1,4 +1,4 @@
-import 'dotenv/config';
+// import 'dotenv/config';
 import { Hono } from 'hono';
 import { renderer } from './renderer';
 
