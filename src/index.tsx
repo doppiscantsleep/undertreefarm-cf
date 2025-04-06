@@ -1,8 +1,17 @@
-// import 'dotenv/config';
+import 'dotenv/config';
 import { Hono } from 'hono';
 import { renderer } from './renderer';
+import { envReq } from '../functions/env';
 
-const weatherapi = process.env.OPENWEATHER_KEY;
+// const weatherapi = process.env.OPENWEATHER_KEY;
+
+const weatherapi = envReq
+
+
+// const weatherapi = context.env.OPENWEATHER_KEY;
+
+
+
 const theURL =
   "http://api.openweathermap.org/data/2.5/weather?id=4996956&units=imperial&appid=" + weatherapi;
 
