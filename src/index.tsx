@@ -3,7 +3,8 @@ import { Hono } from 'hono';
 import { renderer } from './renderer';
 import { getWeatherKey } from '../functions/env';
 
-// const weatherapi = process.env.OPENWEATHER_KEY;
+
+// const theURL = "http://api.openweathermap.org/data/2.5/weather?id=4996956&units=imperial&appid=" + process.env.OPENWEATHER_KEY;
 
 
 interface WeatherData {
@@ -35,18 +36,18 @@ const app = new Hono();
 app.use(renderer);
 
 app.get("*", async (c) => {
-  const weatherData = await getStuff(c); // Call getStuff here
+  const weatherData = await getStuff(c);
 
   // Determine the image to display based on the description
   const weatherImage = 
     weatherData.desc === "clear sky"
-      ? `<img src="/clear-sky.png" alt="Clear Sky" style="width: 50px; height: 50px; margin-left: 10px;">`
+      ? `<img src="/images/clear-sky.png" alt="Clear Sky" style="width: 50px; height: 50px; margin-left: 10px;">`
       : weatherData.desc.includes("rain")
-      ? `<img src="/rain.png" alt="Rain" style="width: 50px; height: 50px; margin-left: 10px;">`
+      ? `<img src="/images/rain.png" alt="Rain" style="width: 50px; height: 50px; margin-left: 10px;">`
       : weatherData.desc.includes("thunderstorm")
-      ? `<img src="/thunderstorm.png" alt="Thunderstorm" style="width: 50px; height: 50px; margin-left: 10px;">`
+      ? `<img src="/images/thunderstorm.png" alt="Thunderstorm" style="width: 50px; height: 50px; margin-left: 10px;">`
       : weatherData.desc === "few clouds"
-      ? `<img src="/few-clouds.png" alt="Few Clouds" style="width: 50px; height: 50px; margin-left: 10px;">`
+      ? `<img src="/images/few-clouds.png" alt="Few Clouds" style="width: 50px; height: 50px; margin-left: 10px;">`
       : "";
 
 
@@ -57,45 +58,13 @@ app.get("*", async (c) => {
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <title>Undertree Farm</title>
-          <link rel="icon" type="image/png" href="/favicon.png">
-          <style>
-            body {
-              margin: 0;
-              font-family: sans-serif;
-              background-color: #f3f3f3;
-              display: flex;
-              flex-direction: column; /* Stack elements vertically */
-              justify-content: flex-start; /* Align elements at the top */
-              align-items: center; /* Center elements horizontally */
-              height: 100vh;
-              overflow: hidden;
-              position: relative;
-            }
-            img {
-              width: 250px; /* Adjust size of the favicon */
-              margin-top: 150px; /* Add spacing at the top */
-            }
-            .bee {
-              position: fixed;
-              width: 40px;
-              height: 40px;
-              background-image: url('/bee.png');
-              background-size: contain;
-              background-repeat: no-repeat;
-              pointer-events: none;
-              transition: transform 0.05s linear;
-              top: 0;
-              left: 0;
-            }
-      #weather {
-        margin-top: -160px; /* Add spacing below the favicon */
-        text-align: center; /* Center-align the weather information */
-        font-size: 0.8rem; /* Make the font smaller */
-      }
-          </style>
+          <link rel="icon" type="image/png" href="/images/favicon.png">
+          <link rel="stylesheet" href="/css/style.css">
         </head>
         <body>
-          <img src="/favicon.png" alt="Undertree Farm logo">
+        <div id="arch">
+        </div>
+          <img src="/images/favicon.png" alt="Undertree Farm logo">
           <div id="weather">
             <p>${weatherImage}</p>
             <p>Description: ${weatherData.desc}</p>
