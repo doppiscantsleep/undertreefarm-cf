@@ -40,18 +40,20 @@ app.get("*", async (c) => {
   const weatherData = await getStuff(c);
 
   // Determine the image to display based on the description
-  const weatherImage = 
+  const weatherImage =
     weatherData.desc === "clear sky"
       ? `<img src="/images/clear-sky.png" alt="Clear Sky" style="width: 50px; height: 50px; margin-left: 10px;">`
       : weatherData.desc.includes("rain")
-      ? `<img src="/images/rain.png" alt="Rain" style="width: 50px; height: 50px; margin-left: 10px;">`
-      : weatherData.desc.includes("thunderstorm")
-      ? `<img src="/images/thunderstorm.png" alt="Thunderstorm" style="width: 50px; height: 50px; margin-left: 10px;">`
-      : weatherData.desc.includes("overcast clouds")
-      ? `<img src="/images/overcast-clouds.png" alt="Overcast Clouds" style="width: 50px; height: 50px; margin-left: 10px;">`
-      : weatherData.desc === "few clouds"
-      ? `<img src="/images/few-clouds.png" alt="Few Clouds" style="width: 50px; height: 50px; margin-left: 10px;">`
-      : "";
+        ? `<img src="/images/rain.png" alt="Rain" style="width: 50px; height: 50px; margin-left: 10px;">`
+        : weatherData.desc.includes("thunderstorm")
+          ? `<img src="/images/thunderstorm.png" alt="Thunderstorm" style="width: 50px; height: 50px; margin-left: 10px;">`
+          : weatherData.desc.includes("overcast clouds")
+            ? `<img src="/images/overcast-clouds.png" alt="Overcast Clouds" style="width: 50px; height: 50px; margin-left: 10px;">`
+            : weatherData.desc.includes("snow")
+              ? `<img src="/images/snow.png" alt="Snnow" style="width: 50px; height: 50px; margin-left: 10px;">`
+              : weatherData.desc === "few clouds"
+                ? `<img src="/images/few-clouds.png" alt="Few Clouds" style="width: 50px; height: 50px; margin-left: 10px;">`
+                : "";
 
 
   return c.html(
