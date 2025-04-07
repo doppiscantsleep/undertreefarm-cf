@@ -15,7 +15,7 @@ interface WeatherData {
 
 const getStuff = async (context: any) => {
 
-  // comment out for local testing
+  // // comment out for local testing
   const weatherapi = await getWeatherKey(context);
   const theURL = `http://api.openweathermap.org/data/2.5/weather?id=4996956&units=imperial&appid=${weatherapi}`;
 
@@ -47,6 +47,8 @@ app.get("*", async (c) => {
       ? `<img src="/images/rain.png" alt="Rain" style="width: 50px; height: 50px; margin-left: 10px;">`
       : weatherData.desc.includes("thunderstorm")
       ? `<img src="/images/thunderstorm.png" alt="Thunderstorm" style="width: 50px; height: 50px; margin-left: 10px;">`
+      : weatherData.desc.includes("overcast clouds")
+      ? `<img src="/images/overcast-clouds.png" alt="Overcast Clouds" style="width: 50px; height: 50px; margin-left: 10px;">`
       : weatherData.desc === "few clouds"
       ? `<img src="/images/few-clouds.png" alt="Few Clouds" style="width: 50px; height: 50px; margin-left: 10px;">`
       : "";
