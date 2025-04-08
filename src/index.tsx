@@ -50,10 +50,12 @@ app.get("*", async (c) => {
           : weatherData.desc.includes("overcast clouds")
             ? `<img src="/images/overcast-clouds.png" alt="Overcast Clouds" style="width: 50px; height: 50px; margin-left: 10px;">`
             : weatherData.desc.includes("snow")
-              ? `<img src="/images/snow.png" alt="Snnow" style="width: 50px; height: 50px; margin-left: 10px;">`
-              : weatherData.desc === "few clouds"
-                ? `<img src="/images/few-clouds.png" alt="Few Clouds" style="width: 50px; height: 50px; margin-left: 10px;">`
-                : "";
+              ? `<img src="/images/snow.png" alt="Snow" style="width: 50px; height: 50px; margin-left: 10px;">`
+              : weatherData.desc.includes("scattered clouds")
+                ? `<img src="/images/scattered-clouds.png" alt="Scattered clouds" style="width: 50px; height: 50px; margin-left: 10px;">`
+                : weatherData.desc === "few clouds"
+                  ? `<img src="/images/few-clouds.png" alt="Few Clouds" style="width: 50px; height: 50px; margin-left: 10px;">`
+                  : "";
 
 
   return c.html(
