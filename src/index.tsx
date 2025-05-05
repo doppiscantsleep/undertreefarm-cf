@@ -55,6 +55,8 @@ app.get("*", async (c) => {
                 ? `<img src="/images/scattered-clouds.png" alt="Scattered clouds" style="width: 50px; height: 50px; margin-left: 10px;">`
                 : weatherData.desc.includes("broken clouds")
                 ? `<img src="/images/broken-clouds.png" alt="Broken clouds" style="width: 50px; height: 50px; margin-left: 10px;">`
+                : weatherData.desc.includes("mist")
+                ? `<img src="/images/mist.png" alt="Mist" style="width: 50px; height: 50px; margin-left: 10px;">`
                 : weatherData.desc === "few clouds"
                   ? `<img src="/images/few-clouds.png" alt="Few Clouds" style="width: 50px; height: 50px; margin-left: 10px;">`
                   : "";
